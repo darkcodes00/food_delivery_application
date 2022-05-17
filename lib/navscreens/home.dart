@@ -1,6 +1,4 @@
 // ignore_for_file: avoid_unnecessary_containers, sized_box_for_whitespace
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:food_delivery_application/food.dart';
@@ -23,8 +21,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     "Chicago, US",
     "Detroit, US"
   ];
+
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     TabController _tabController = TabController(length: 3, vsync: this);
     return Scaffold(
       body: SingleChildScrollView(
@@ -82,7 +83,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      width: 230,
+                      width: width * 0.62,
                       child: MainText(
                           text: "Order Your Food Fast and Free",
                           color: Colors.black),
@@ -103,13 +104,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                    height: 48,
-                    width: 263,
+                    // height: height * 0.070,/
+                    width: width * 0.77,
                     decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xffE6E6E6),
-                        ),
-                        borderRadius: BorderRadius.circular(10)),
+                      border: Border.all(
+                        color: const Color(0xffE6E6E6),
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     child: const TextField(
                       decoration: InputDecoration(
                         hintText: "Search",
@@ -129,15 +131,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     width: 16,
                   ),
                   Container(
-                    height: 48,
-                    width: 48,
+                    height: height * 0.070,
+                    width: width * 0.13,
                     decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Theme.of(context).primaryColor,
-                        ),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Icon(IconlyLight.filter,
-                        color: Theme.of(context).primaryColor),
+                      border: Border.all(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Icon(
+                      IconlyLight.filter,
+                      color: Theme.of(context).primaryColor,
+                    ),
                   ),
                 ],
               ),
@@ -163,31 +168,35 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 children: [
                   Expanded(
                     child: Container(
-                      width: 100,
-                      height: 40,
+                      width: width,
+                      height: height * 0.06,
                       child: TabBar(
                         isScrollable: true,
                         controller: _tabController,
                         // labelPadding: const EdgeInsets.only(left: 12),
                         indicator: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
-                            borderRadius: BorderRadius.circular(10)),
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                         tabs: [
                           Tab(
                             child: Container(
                               // alignment: Alignment.center,
-                              height: 40,
-                              width: 100,
+                              height: height,
+                              width: width * 0.3,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 border: Border.all(
-                                    color: Theme.of(context).primaryColor),
+                                  color: Theme.of(context).primaryColor,
+                                ),
                               ),
                               child: Row(
                                 // crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Image.asset("assets/img/burgericon.png"),
+                                  Image.asset(
+                                    "assets/img/burgericon.png",
+                                  ),
                                   const SizedBox(
                                     width: 8,
                                   ),
@@ -200,12 +209,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                           ),
                           Tab(
                             child: Container(
-                              height: 40,
-                              width: 100,
+                              height: height,
+                              width: width * 0.3,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 border: Border.all(
-                                    color: Theme.of(context).primaryColor),
+                                  color: Theme.of(context).primaryColor,
+                                ),
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -227,8 +237,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                           ),
                           Tab(
                             child: Container(
-                              height: 40,
-                              width: 100,
+                              height: height,
+                              width: width * 0.35,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 border: Border.all(
@@ -258,380 +268,218 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 height: 16,
               ),
               Container(
-                  // decoration: BoxDecoration(color: Colors.red),
-                  height: 210,
-                  width: double.maxFinite,
-                  child: TabBarView(
-                    controller: _tabController,
-                    children: [
-                      GridView(
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 5,
-                          mainAxisSpacing: 5,
-                          mainAxisExtent: 207,
-                          childAspectRatio: 1,
-                        ),
-                        children: [
-                          InkWell(
-                            onTap: () =>
-                                Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const Food(),
-                            )),
-                            child: Card(
-                              child: Container(
-                                alignment: Alignment.topLeft,
-                                padding: EdgeInsets.all(8),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      child: Row(
-                                        children: [
-                                          Image.asset("assets/img/star.png"),
-                                          const SizedBox(
-                                            width: 2,
-                                          ),
-                                          AppText(
-                                            text: "4.8",
-                                            size: 12,
-                                            color: Colors.black,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 76,
-                                      width: 131,
-                                      child: Image.asset(
-                                        "assets/img/burger.png",
-                                        width: 87,
-                                        height: 70,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 8,
-                                    ),
-                                    Container(
-                                      height: 23,
-                                      width: double.infinity,
-                                      child: MainText(
-                                        text: "Chicken Burger",
-                                        color: Colors.black,
-                                        size: 18,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 4,
-                                    ),
-                                    Container(
-                                      height: 32,
-                                      width: double.infinity,
-                                      child: AppText(
-                                        text:
-                                            "200 gr chicken + cheese  Lettuce + tomato",
-                                        color: Colors.black,
-                                        size: 12,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 4,
-                                    ),
-                                    Container(
-                                      height: 22,
-                                      child: Row(
-                                        children: [
-                                          AppText(
-                                            text: "\$ 22.00",
-                                            size: 14,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                          const Spacer(),
-                                          Image.asset(
-                                            "assets/img/plus.png",
-                                            height: 22,
-                                            width: 22,
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () =>
-                                Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const Food(),
-                            )),
-                            child: Card(
-                              child: Container(
-                                alignment: Alignment.topLeft,
-                                padding: EdgeInsets.all(8),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      child: Row(
-                                        children: [
-                                          Image.asset("assets/img/star.png"),
-                                          const SizedBox(
-                                            width: 2,
-                                          ),
-                                          AppText(
-                                            text: "4.8",
-                                            size: 12,
-                                            color: Colors.black,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 76,
-                                      width: 131,
-                                      child: Image.asset(
-                                        "assets/img/burger.png",
-                                        width: 87,
-                                        height: 70,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 8,
-                                    ),
-                                    Container(
-                                      height: 23,
-                                      width: double.infinity,
-                                      child: MainText(
-                                        text: "Chicken Burger",
-                                        color: Colors.black,
-                                        size: 18,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 4,
-                                    ),
-                                    Container(
-                                      height: 32,
-                                      width: double.infinity,
-                                      child: AppText(
-                                        text:
-                                            "200 gr chicken + cheese  Lettuce + tomato",
-                                        color: Colors.black,
-                                        size: 12,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 4,
-                                    ),
-                                    Container(
-                                      height: 22,
-                                      child: Row(
-                                        children: [
-                                          AppText(
-                                            text: "\$ 22.00",
-                                            size: 14,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                          const Spacer(),
-                                          Image.asset(
-                                            "assets/img/plus.png",
-                                            height: 22,
-                                            width: 22,
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () =>
-                                Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const Food(),
-                            )),
-                            child: Card(
-                              child: Container(
-                                alignment: Alignment.topLeft,
-                                padding: EdgeInsets.all(8),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      child: Row(
-                                        children: [
-                                          Image.asset("assets/img/star.png"),
-                                          const SizedBox(
-                                            width: 2,
-                                          ),
-                                          AppText(
-                                            text: "4.8",
-                                            size: 12,
-                                            color: Colors.black,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 76,
-                                      width: 131,
-                                      child: Image.asset(
-                                        "assets/img/burger.png",
-                                        width: 87,
-                                        height: 70,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 8,
-                                    ),
-                                    Container(
-                                      height: 23,
-                                      width: double.infinity,
-                                      child: MainText(
-                                        text: "Chicken Burger",
-                                        color: Colors.black,
-                                        size: 18,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 4,
-                                    ),
-                                    Container(
-                                      height: 32,
-                                      width: double.infinity,
-                                      child: AppText(
-                                        text:
-                                            "200 gr chicken + cheese  Lettuce + tomato",
-                                        color: Colors.black,
-                                        size: 12,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 4,
-                                    ),
-                                    Container(
-                                      height: 22,
-                                      child: Row(
-                                        children: [
-                                          AppText(
-                                            text: "\$ 22.00",
-                                            size: 14,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                          const Spacer(),
-                                          Image.asset(
-                                            "assets/img/plus.png",
-                                            height: 22,
-                                            width: 22,
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () =>
-                                Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const Food(),
-                            )),
-                            child: Card(
-                              child: Container(
-                                alignment: Alignment.topLeft,
-                                padding: EdgeInsets.all(8),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      child: Row(
-                                        children: [
-                                          Image.asset("assets/img/star.png"),
-                                          const SizedBox(
-                                            width: 2,
-                                          ),
-                                          AppText(
-                                            text: "4.8",
-                                            size: 12,
-                                            color: Colors.black,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 76,
-                                      width: 131,
-                                      child: Image.asset(
-                                        "assets/img/burger.png",
-                                        width: 87,
-                                        height: 70,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 8,
-                                    ),
-                                    Container(
-                                      height: 23,
-                                      width: double.infinity,
-                                      child: MainText(
-                                        text: "Chicken Burger",
-                                        color: Colors.black,
-                                        size: 18,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 4,
-                                    ),
-                                    Container(
-                                      height: 32,
-                                      width: double.infinity,
-                                      child: AppText(
-                                        text:
-                                            "200 gr chicken + cheese  Lettuce + tomato",
-                                        color: Colors.black,
-                                        size: 12,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 4,
-                                    ),
-                                    Container(
-                                      height: 22,
-                                      child: Row(
-                                        children: [
-                                          AppText(
-                                            text: "\$ 22.00",
-                                            size: 14,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                          const Spacer(),
-                                          Image.asset(
-                                            "assets/img/plus.png",
-                                            height: 22,
-                                            width: 22,
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                // decoration: BoxDecoration(color: Colors.red),
+                height: height,
+                width: double.maxFinite,
+                child: TabBarView(
+                  controller: _tabController,
+                  children: [
+                    GridView.builder(
+                      itemCount: 10,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 5,
+                        mainAxisSpacing: 5,
+                        mainAxisExtent: 207,
+                        childAspectRatio: 1,
                       ),
-                      const Text("Pizza"),
-                      const Text("Sandwich"),
-                    ],
-                  )),
+                      itemBuilder: (BuildContext context, int index) {
+                        return InkWell(
+                          onTap: () =>
+                              Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const Food(),
+                          )),
+                          child: Card(
+                            child: Container(
+                              alignment: Alignment.topLeft,
+                              padding: const EdgeInsets.all(8),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        Image.asset("assets/img/star.png"),
+                                        const SizedBox(
+                                          width: 2,
+                                        ),
+                                        AppText(
+                                          text: "4.8",
+                                          size: 12,
+                                          color: Colors.black,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 76,
+                                    width: 131,
+                                    child: Image.asset(
+                                      "assets/img/burger.png",
+                                      width: 87,
+                                      height: 70,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  Container(
+                                    height: 23,
+                                    width: double.infinity,
+                                    child: MainText(
+                                      text: "Chicken Burger",
+                                      color: Colors.black,
+                                      size: 18,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
+                                  Container(
+                                    height: 32,
+                                    width: double.infinity,
+                                    child: AppText(
+                                      text:
+                                          "200 gr chicken + cheese  Lettuce + tomato",
+                                      color: Colors.black,
+                                      size: 12,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
+                                  Container(
+                                    height: 22,
+                                    child: Row(
+                                      children: [
+                                        AppText(
+                                          text: "\$ 22.00",
+                                          size: 14,
+                                          color: Theme.of(context).primaryColor,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                        const Spacer(),
+                                        Image.asset(
+                                          "assets/img/plus.png",
+                                          height: 22,
+                                          width: 22,
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    GridView.builder(
+                      itemCount: 10,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 5,
+                        mainAxisSpacing: 5,
+                        mainAxisExtent: 207,
+                        childAspectRatio: 1,
+                      ),
+                      itemBuilder: (BuildContext context, int index) {
+                        return InkWell(
+                          onTap: () =>
+                              Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const Food(),
+                          )),
+                          child: Card(
+                            child: Container(
+                              alignment: Alignment.topLeft,
+                              padding: const EdgeInsets.all(8),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        Image.asset("assets/img/star.png"),
+                                        const SizedBox(
+                                          width: 2,
+                                        ),
+                                        AppText(
+                                          text: "4.8",
+                                          size: 12,
+                                          color: Colors.black,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 76,
+                                    width: 131,
+                                    child: Image.asset(
+                                      "assets/img/pizza.png",
+                                      width: 87,
+                                      height: 70,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  Container(
+                                    height: 23,
+                                    width: double.infinity,
+                                    child: MainText(
+                                      text: "Chicken Burger",
+                                      color: Colors.black,
+                                      size: 18,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
+                                  Container(
+                                    height: 32,
+                                    width: double.infinity,
+                                    child: AppText(
+                                      text:
+                                          "200 gr chicken + cheese  Lettuce + tomato",
+                                      color: Colors.black,
+                                      size: 12,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
+                                  Container(
+                                    height: 22,
+                                    child: Row(
+                                      children: [
+                                        AppText(
+                                          text: "\$ 22.00",
+                                          size: 14,
+                                          color: Theme.of(context).primaryColor,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                        const Spacer(),
+                                        Image.asset(
+                                          "assets/img/plus.png",
+                                          height: 22,
+                                          width: 22,
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    const Text("Sandwich"),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

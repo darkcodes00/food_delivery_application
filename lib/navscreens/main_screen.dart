@@ -21,7 +21,6 @@ class _MainScreenState extends State<MainScreen> {
   void onTap(int index) {
     setState(() {
       currentIndex = index;
-     
     });
   }
 
@@ -30,30 +29,34 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Theme.of(context).primaryColor,
-          // selectedIconTheme:
-          // IconThemeData(color: Theme.of(context).primaryColor),
-          unselectedItemColor: Colors.grey,
-          showSelectedLabels: true,
-          showUnselectedLabels: false,
-          onTap: onTap,
-          currentIndex: currentIndex,
-          items: const [
-            BottomNavigationBarItem(
-                label: "Home",
-                icon: Icon(IconlyLight.home),
-                activeIcon: Icon(IconlyBold.home)),
-            BottomNavigationBarItem(
-                label: "Shop",
-                icon: Icon(
-                  IconlyLight.bag,
-                ),
-                activeIcon: Icon(IconlyBold.bag)),
-            BottomNavigationBarItem(
-                label: "More",
-                icon: Icon(IconlyLight.moreCircle),
-                activeIcon: Icon(IconlyBold.moreCircle)),
-          ]),
+        selectedItemColor: Theme.of(context).primaryColor,
+        // selectedIconTheme:
+        // IconThemeData(color: Theme.of(context).primaryColor),
+        unselectedItemColor: Colors.grey,
+        showSelectedLabels: true,
+        showUnselectedLabels: false,
+        onTap: onTap,
+        currentIndex: currentIndex,
+        items: const [
+          BottomNavigationBarItem(
+            label: "Home",
+            icon: Icon(IconlyLight.home),
+            activeIcon: Icon(IconlyBold.home),
+          ),
+          BottomNavigationBarItem(
+            label: "Shop",
+            icon: Icon(
+              IconlyLight.bag,
+            ),
+            activeIcon: Icon(IconlyBold.bag),
+          ),
+          BottomNavigationBarItem(
+            label: "More",
+            icon: Icon(IconlyLight.moreCircle),
+            activeIcon: Icon(IconlyBold.moreCircle),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -33,7 +33,8 @@ class _FoodState extends State<Food> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: const Color(0xffFFF1E5),
       body: SingleChildScrollView(
@@ -42,7 +43,7 @@ class _FoodState extends State<Food> {
             Stack(
               children: [
                 SizedBox(
-                  height: 306,
+                  height: height * 0.50,
                   width: double.infinity,
                   child: CarouselSlider.builder(
                     itemCount: images.length,
@@ -202,8 +203,8 @@ class _FoodState extends State<Food> {
                           children: [
                             Container(
                               padding: EdgeInsets.all(8),
-                              height: 65,
-                              width: 93,
+                              height: height,
+                              width: width * 0.25,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
                                 border: Border.all(
@@ -233,7 +234,7 @@ class _FoodState extends State<Food> {
                                   const Spacer(),
                                   AppText(
                                     text: "Medium",
-                                    size: 18,
+                                    size: 16,
                                     color: Colors.black,
                                     fontWeight: FontWeight.w500,
                                   )
@@ -243,8 +244,8 @@ class _FoodState extends State<Food> {
                             const Spacer(),
                             Container(
                               padding: EdgeInsets.all(8),
-                              height: 65,
-                              width: 93,
+                              height: height,
+                              width: width * 0.25,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
                                 border: Border.all(
@@ -268,7 +269,7 @@ class _FoodState extends State<Food> {
                                   const Spacer(),
                                   AppText(
                                     text: "554 KCal",
-                                    size: 18,
+                                    size: 16,
                                     color: Colors.black,
                                   )
                                 ],
@@ -277,8 +278,8 @@ class _FoodState extends State<Food> {
                             const Spacer(),
                             Container(
                               padding: EdgeInsets.all(8),
-                              height: 65,
-                              width: 93,
+                              height: height,
+                              width: width * 0.25,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
                                 border: Border.all(
@@ -302,7 +303,7 @@ class _FoodState extends State<Food> {
                                   const Spacer(),
                                   AppText(
                                     text: "45 min",
-                                    size: 18,
+                                    size: 16,
                                     color: Colors.black,
                                   )
                                 ],

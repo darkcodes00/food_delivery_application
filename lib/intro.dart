@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_unnecessary_containers, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
-import 'package:food_delivery_application/navscreens/home.dart';
 import 'package:food_delivery_application/navscreens/main_screen.dart';
 import 'package:food_delivery_application/widgets/apptext.dart';
 import 'package:food_delivery_application/widgets/maintext.dart';
@@ -54,23 +53,29 @@ class Intro extends StatelessWidget {
                   ),
                 ),
                 Container(
-                    alignment: Alignment.center,
-                    child: Image.asset("assets/img/skip.png")),
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    "assets/img/skip.png",
+                  ),
+                ),
                 const SizedBox(
                   height: 30,
                 ),
                 Container(
-                    alignment: Alignment.center,
-                    child: MyTextButton(
-                      buttonText: "Skip",
-                      textColor: Colors.white,
-                      textSize: 18,
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
+                  alignment: Alignment.center,
+                  child: MyTextButton(
+                    buttonText: "Skip",
+                    textColor: Colors.white,
+                    textSize: 18,
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
                           builder: (context) => const MainScreen(),
-                        ));
-                      },
-                    ))
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ],
             ),
           ),
